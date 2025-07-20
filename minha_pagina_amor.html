@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Minha Preta Linda que Eu Amo</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      background: url('EU.JPG.JPEG') no-repeat center center fixed;
+      background-size: cover;
+      scroll-behavior: smooth;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px 200px 20px; /* adicionamos mais padding no final pra forçar rolagem */
+      text-align: center;
+    }
+
+    .message-box {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ffd700;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .nickname {
+      font-size: 4rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ffd700, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.7;
+      margin: 20px 0;
+      color: #eee;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .signature {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 2.5rem;
+      color: #ffd700;
+      margin-top: 40px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .hearts {
+      font-size: 2rem;
+      animation: pulse 1.5s infinite;
+      margin: 20px 0;
+    }
+
+    .icon-love {
+      font-size: 4rem;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+
+    .btn-play {
+      background: linear-gradient(45deg, #ffd700, #ff8c00);
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .btn-play:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4081;
+      font-size: 20px;
+      pointer-events: none;
+      opacity: 0;
+      animation: floatHeart 4s ease-in forwards;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-300px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="message-box">
+      <h1>PARA MINHA</h1>
+      <div class="nickname">PRETA</div>
+      <div class="hearts">💛 🤎 🖤 💖</div>
+      <div class="icon-love">👑</div>
+
+      <p>Minha rainha, meu tesouro, meu amor...</p>
+      <p>Você ilumina minha vida como o sol ilumina o dia.</p>
+      <p>Nenhuma palavra é capaz de expressar o que sinto por você.</p>
+
+      <div class="hearts">💘 💝 💟 💗</div>
+
+      <p>Você é a mulher mais incrível que já conheci, e eu sou o homem mais sortudo por ter você ao meu lado.</p>
+      <p>Prometo te amar, respeitar e cuidar de você todos os dias da minha vida.</p>
+
+      <button class="btn-play" onclick="playSong()">
+        Ouça nossa música 🎵
+      </button>
+
+      <div class="signature">Para sempre seu<br>Seu amor</div>
+    </div>
+  </div>
+
+  <script>
+    function playSong() {
+      const songUrl = 'https://youtu.be/f6SS4UT0bPI?si=30RhCEoe3dQOHS_c';
+      window.open(songUrl, '_blank');
+    }
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = ['❤️','💛','💖','💗','💘','💝'][Math.floor(Math.random() * 6)];
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = window.innerHeight + 'px';
+      heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 500);
+
+    document.addEventListener('mousemove', function(e) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = ['❤️','💛','💖','💗','💘','💝'][Math.floor(Math.random() * 6)];
+      heart.style.left = e.pageX + 'px';
+      heart.style.top = e.pageY + 'px';
+      heart.style.fontSize = Math.random() * 14 + 10 + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.style.transform = 'translateY(-60px)';
+        heart.style.opacity = '0';
+      }, 10);
+
+      setTimeout(() => heart.remove(), 2000);
+    });
+  </script>
+</body>
+</html>
